@@ -1,35 +1,31 @@
 const steps = [
   {
-    title: "Du nimmst den Schaden digital auf",
-    desc: "Fahrzeugdaten, Fotos, Schadeninfos, Unterschrift. Direkt in der DGD-Direkt-App vor Ort.",
+    title: "Du nimmst den Schaden auf",
+    desc: "23 Minuten. Fahrzeugdaten, Fotos, Schadeninfos. Direkt in der DGD-Direkt-App vor Ort.",
   },
   {
-    title: "DGD prüft und erstellt das Gutachten",
-    desc: "Fachliche Bewertung durch qualifizierte Sachverständige nach DGD-Standard. 4-Augen-Check inklusive.",
+    title: "DGD erstellt das Gutachten",
+    desc: "Innerhalb von 24h. Fachliche Bewertung durch Sachverständige nach DGD-Standard. 4-Augen-Check inklusive.",
   },
   {
-    title: "DGD unterstützt die Abwicklung",
-    desc: "Kommunikation mit der Versicherung, Rückfragen, Versand und Abrechnung.",
-  },
-  {
-    title: "Dein Betrieb bleibt beim Kunden sichtbar",
-    desc: "Du führst den Kunden, DGD arbeitet im Hintergrund.",
+    title: "DGD regelt die Versicherung. Du reparierst.",
+    desc: "Kommunikation, Rückfragen, Abrechnung. Alles übernommen. Dein Team konzentriert sich auf die Reparatur.",
   },
 ];
 
 export default function Process() {
   return (
     <section id="ablauf" className="py-20 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-[#102240] text-center mb-16">
-          Vom Schaden zum fertigen Gutachten. Ohne Bürokratie für dein Team.
+          In 3 Schritten startklar. Ohne Setup, ohne Schulung.
         </h2>
 
         {/* Desktop */}
-        <div className="hidden lg:grid lg:grid-cols-4 gap-0 relative">
-          <div className="absolute top-6 left-[12.5%] right-[12.5%] h-0.5 bg-[#d4a843]/30" />
+        <div className="hidden lg:grid lg:grid-cols-3 gap-0 relative">
+          <div className="absolute top-6 left-[16.7%] right-[16.7%] h-0.5 bg-[#d4a843]/30" />
           {steps.map((step, i) => (
-            <div key={i} className="flex flex-col items-center text-center px-4 relative">
+            <div key={i} className="flex flex-col items-center text-center px-6 relative">
               <div className="w-12 h-12 rounded-full bg-[#d4a843] text-white font-bold text-lg flex items-center justify-center mb-5 shadow-md relative z-10">
                 {i + 1}
               </div>

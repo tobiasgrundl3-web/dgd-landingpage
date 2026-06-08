@@ -1,8 +1,10 @@
-const badges = [
-  "Keine Abos",
-  "Schadenaufnahme bei dir vor Ort",
-  "Haftpflicht direkt mit der Versicherung",
+const avatars = [
+  { initials: "TS", bg: "bg-[#d4a843]" },
+  { initials: "MW", bg: "bg-[#FF8C00]" },
+  { initials: "FM", bg: "bg-[#1a3a60]" },
 ];
+
+const riskItems = ["Kein Abo", "0 € bei Haftpflicht", "Kostenloses Test-Gutachten"];
 
 export default function Hero() {
   return (
@@ -14,22 +16,20 @@ export default function Hero() {
               Für Kfz-Betriebe mit regelmäßigem Unfallschaden-Aufkommen
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Haftpflichtgutachten abwickeln, ohne dein Team mit Papierkram zu
-              blockieren.
+              Haftpflichtgutachten in 24h. 0 € für deine Werkstatt.
             </h1>
             <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
-              Schadens- und Wertgutachten direkt für deine Werkstatt. Digitale
-              Schadenaufnahme durch deinen Betrieb als verifizierter DGD-Partner
-              direkt vor Ort, fachliche Bewertung durch Sachverständige nach
-              DGD-Standard. Bundesweit, ohne Abo.
+              Dein Team nimmt den Schaden in 23 Minuten auf. Unsere
+              Sachverständigen erstellen das Gutachten. Wir übernehmen die
+              Versicherung. Du reparierst.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-3">
               <a
                 href="#anfrage"
                 className="bg-[#d4a843] text-white px-6 py-3.5 rounded-lg font-semibold text-center hover:bg-[#b8902e] transition-colors text-sm sm:text-base"
               >
-                Partnergespräch mit Jonas anfragen
+                Jetzt kostenlos Partnergespräch anfragen
               </a>
               <a
                 href="#ablauf"
@@ -39,21 +39,31 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-8">
-              {badges.map((badge) => (
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mb-8">
+              {riskItems.map((item) => (
                 <span
-                  key={badge}
-                  className="flex items-center gap-2 bg-white/10 text-white text-xs sm:text-sm px-3 py-1.5 rounded-full"
+                  key={item}
+                  className="text-[13px] text-[#999] flex items-center gap-1"
                 >
-                  <span className="text-[#d4a843] font-bold">✓</span>
-                  {badge}
+                  <span className="text-[#2D9B5A] font-bold">✓</span>
+                  {item}
                 </span>
               ))}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex -space-x-2">
+                {avatars.map((a) => (
+                  <div
+                    key={a.initials}
+                    className={`w-8 h-8 rounded-full ${a.bg} text-white text-xs font-bold flex items-center justify-center ring-2 ring-[#102240]`}
+                  >
+                    {a.initials}
+                  </div>
+                ))}
+              </div>
               <span className="text-[#d4a843] text-xl tracking-tighter">★★★★★</span>
-              <p className="text-gray-300 text-sm">
+              <p className="text-white text-base font-medium">
                 Über 500 Kfz-Betriebe vertrauen DGD Direkt
               </p>
             </div>

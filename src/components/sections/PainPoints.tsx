@@ -41,6 +41,14 @@ export default function PainPoints() {
         >
           Ja, ich will den Ablauf kennenlernen
         </a>
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-3">
+          {["Kein Abo", "0 € bei Haftpflicht", "Kostenloses Test-Gutachten"].map((item) => (
+            <span key={item} className="text-[13px] text-[#666] flex items-center gap-1">
+              <span className="text-[#2D9B5A] font-bold">✓</span>
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

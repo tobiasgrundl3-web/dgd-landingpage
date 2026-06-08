@@ -15,14 +15,6 @@ const contacts = [
     href: "https://wa.me/491713527852",
     linkLabel: "Nachricht senden",
   },
-  {
-    emoji: "📅",
-    title: "Termin buchen",
-    primary: "15-Minuten-Slot",
-    secondary: "Direkt in den Kalender",
-    href: "https://calendly.com/j-kirse-dgd-direkt",
-    linkLabel: "Termin auswählen",
-  },
 ];
 
 export default function Contact() {
@@ -32,7 +24,7 @@ export default function Contact() {
         <h2 className="text-3xl sm:text-4xl font-bold mb-12">
           So erreichst du uns sofort.
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {contacts.map((c) => (
             <a
               key={c.title}

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-// Placeholder — configure endpoint before going live
-const ENDPOINT = "/api/anfrage";
+const ENDPOINT = "https://hooks.zapier.com/hooks/catch/26752793/4bvwtqt/";
 
 const nextSteps = [
   "Jonas ruft dich innerhalb von 24 Stunden zurück.",
@@ -66,6 +66,13 @@ function RadioGroup({
 }
 
 export default function ContactForm() {
+  const [utm, setUtm] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: "",
+  });
   const [form, setForm] = useState({
     mitarbeiter: "",
     schaeden: "",
@@ -76,13 +83,24 @@ export default function ContactForm() {
     datenschutz: false,
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    setUtm({
+      utm_source: p.get("utm_source") ?? "",
+      utm_medium: p.get("utm_medium") ?? "",
+      utm_campaign: p.get("utm_campaign") ?? "",
+      utm_term: p.get("utm_term") ?? "",
+      utm_content: p.get("utm_content") ?? "",
+    });
+  }, []);
 
   const update = (field: string, value: string | boolean) =>
     setForm((prev) => ({ ...prev, [field]: value }));
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!form.datenschutz) {
       setError("Bitte stimme der Datenschutzerklärung zu.");
@@ -94,9 +112,9 @@ export default function ContactForm() {
       await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...utm }),
       });
-      setSuccess(true);
+      router.push("/danke");
     } catch {
       setError(
         "Etwas ist schiefgelaufen. Bitte ruf uns direkt an: 0800 009 5000"
@@ -119,20 +137,7 @@ export default function ContactForm() {
           </p>
         </div>
 
-        {success ? (
-          <div className="max-w-lg mx-auto text-center bg-[#F5F5F5] rounded-2xl p-12">
-            <div className="w-16 h-16 rounded-full bg-[#d4a843] flex items-center justify-center mx-auto mb-6">
-              <span className="text-white text-2xl font-bold">✓</span>
-            </div>
-            <h3 className="text-2xl font-bold text-[#102240] mb-3">
-              Anfrage erfolgreich!
-            </h3>
-            <p className="text-[#555555]">
-              Jonas meldet sich innerhalb von 24 Stunden bei dir.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <p className="block text-sm font-semibold text-[#1A1A1A] mb-2">
@@ -256,8 +261,16 @@ export default function ContactForm() {
               >
                 {loading
                   ? "Wird gesendet..."
-                  : "Partnergespräch mit Jonas anfragen"}
+                  : "Jetzt kostenlos Partnergespräch anfragen"}
               </button>
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-3">
+                {["Unverbindlich", "Jonas meldet sich persönlich", "In 15 Min. weißt du ob es passt"].map((item) => (
+                  <span key={item} className="text-[13px] text-[#666] flex items-center gap-1">
+                    <span className="text-[#2D9B5A] font-bold">✓</span>
+                    {item}
+                  </span>
+                ))}
+              </div>
             </form>
 
             <div className="bg-[#F5F5F5] rounded-2xl p-8">
@@ -278,7 +291,6 @@ export default function ContactForm() {
               </ol>
             </div>
           </div>
-        )}
       </div>
     </section>
   );

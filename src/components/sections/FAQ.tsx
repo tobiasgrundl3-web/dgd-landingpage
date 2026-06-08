@@ -66,6 +66,14 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+        <div className="text-center mt-12">
+          <a
+            href="#anfrage"
+            className="inline-block bg-[#d4a843] text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-[#b8902e] transition-colors"
+          >
+            Jetzt kostenlos Partnergespräch anfragen
+          </a>
+        </div>
       </div>
     </section>
   );

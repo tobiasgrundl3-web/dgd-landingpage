@@ -26,7 +26,7 @@ export default function Benefits() {
     <section className="py-20 px-4 bg-[#F5F5F5]">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-[#102240] text-center mb-12">
-          Volle Konzentration auf deine Kunden. Wir übernehmen das Gutachten.
+          23 Minuten Aufnahme. 24h Gutachten. 0 € Kosten.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {benefits.map((b) => (
@@ -39,6 +39,14 @@ export default function Benefits() {
               <p className="text-[#555555] leading-relaxed">{b.desc}</p>
             </div>
           ))}
+        </div>
+        <div className="text-center mt-12">
+          <a
+            href="#anfrage"
+            className="inline-block bg-[#d4a843] text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-[#b8902e] transition-colors"
+          >
+            Jetzt kostenlos Partnergespräch anfragen
+          </a>
         </div>
       </div>
     </section>
