@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 const ENDPOINT = "https://hooks.zapier.com/hooks/catch/26752793/4bvwtqt/";
 
 const nextSteps = [
-  "Jonas ruft dich innerhalb von 24 Stunden zurück.",
+  "Wir melden uns innerhalb von 24 Stunden zurück.",
   "Ihr prüft gemeinsam, ob DGD Direkt zu deinem Betrieb passt.",
   "Du erhältst deine persönlichen Zugangsdaten zur DGD-Direkt-App.",
   "Erste Schadenaufnahme mit kostenlosem Test-Gutachten.",
@@ -75,9 +75,9 @@ export default function ContactForm() {
   });
   const [form, setForm] = useState({
     mitarbeiter: "",
-    schaeden: "",
+    schadensfaelle: "",
     name: "",
-    firma: "",
+    werkstatt: "",
     telefon: "",
     plz: "",
     datenschutz: false,
@@ -112,7 +112,15 @@ export default function ContactForm() {
       await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, ...utm }),
+        body: JSON.stringify({
+            mitarbeiter: form.mitarbeiter,
+            schadensfaelle: form.schadensfaelle,
+            name: form.name,
+            werkstatt: form.werkstatt,
+            telefon: form.telefon,
+            plz: form.plz,
+            ...utm,
+          }),
       });
       router.push("/danke");
     } catch {
@@ -129,10 +137,10 @@ export default function ContactForm() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#102240] mb-4">
-            Kostenloses Partnergespräch mit Jonas anfragen
+            Kostenloses Partnergespräch anfragen
           </h2>
           <p className="text-[#555555] text-lg max-w-xl mx-auto">
-            In 2 Minuten ausfüllen. Jonas prüft mit dir, ob DGD Direkt zu
+            In 2 Minuten ausfüllen. Wir prüfen mit dir, ob DGD Direkt zu
             deinem Betrieb passt.
           </p>
         </div>
@@ -155,10 +163,10 @@ export default function ContactForm() {
                   Um wie viele Schadensfälle handelt es sich ca. pro Monat? *
                 </p>
                 <RadioGroup
-                  name="schaeden"
+                  name="schadensfaelle"
                   options={schadenOptionen}
-                  value={form.schaeden}
-                  onChange={(v) => update("schaeden", v)}
+                  value={form.schadensfaelle}
+                  onChange={(v) => update("schadensfaelle", v)}
                 />
               </div>
               <div>
@@ -180,17 +188,17 @@ export default function ContactForm() {
               </div>
               <div>
                 <label
-                  htmlFor="firma"
+                  htmlFor="werkstatt"
                   className="block text-sm font-semibold text-[#1A1A1A] mb-1.5"
                 >
                   Deine Werkstatt / Firma *
                 </label>
                 <input
-                  id="firma"
+                  id="werkstatt"
                   type="text"
                   required
-                  value={form.firma}
-                  onChange={(e) => update("firma", e.target.value)}
+                  value={form.werkstatt}
+                  onChange={(e) => update("werkstatt", e.target.value)}
                   placeholder="Mustermann Kfz-Werkstatt GmbH"
                   className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] transition-colors"
                 />
@@ -264,7 +272,7 @@ export default function ContactForm() {
                   : "Jetzt kostenlos Partnergespräch anfragen"}
               </button>
               <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-3">
-                {["Unverbindlich", "Jonas meldet sich persönlich", "In 15 Min. weißt du ob es passt"].map((item) => (
+                {["Unverbindlich", "Persönliche Beratung", "In 15 Min. weißt du ob es passt"].map((item) => (
                   <span key={item} className="text-[13px] text-[#666] flex items-center gap-1">
                     <span className="text-[#2D9B5A] font-bold">✓</span>
                     {item}

@@ -15,9 +15,12 @@ export default function Hero() {
             <p className="text-[#d4a843] text-xs sm:text-sm font-semibold uppercase tracking-widest mb-5">
               Für Kfz-Betriebe mit regelmäßigem Unfallschaden-Aufkommen
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Haftpflichtgutachten in 24h. 0 € für deine Werkstatt.
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+              Haftpflichtgutachten in 24h.
             </h1>
+            <p className="text-2xl sm:text-3xl font-semibold text-white mb-6">
+              Kein Hof voller wartender Autos.
+            </p>
             <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
               Dein Team nimmt den Schaden in 23 Minuten auf. Unsere
               Sachverständigen erstellen das Gutachten. Wir übernehmen die
@@ -27,15 +30,9 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 mb-3">
               <a
                 href="#anfrage"
-                className="bg-[#d4a843] text-white px-6 py-3.5 rounded-lg font-semibold text-center hover:bg-[#b8902e] transition-colors text-sm sm:text-base"
+                className="bg-[#d4a843] text-white px-6 py-3.5 rounded-lg font-semibold text-center hover:bg-[#b8902e] transition-colors text-sm sm:text-base sm:flex-1"
               >
                 Jetzt kostenlos Partnergespräch anfragen
-              </a>
-              <a
-                href="#ablauf"
-                className="border-2 border-white text-white px-6 py-3.5 rounded-lg font-semibold text-center hover:bg-white hover:text-[#102240] transition-colors text-sm sm:text-base"
-              >
-                Ablauf in 60 Sekunden
               </a>
             </div>
 
