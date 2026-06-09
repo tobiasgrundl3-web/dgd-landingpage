@@ -35,7 +35,7 @@ export default function DankePage() {
           Danke für deine Anfrage!
         </h1>
         <p className="text-[#555555] text-lg leading-relaxed mb-4">
-          Jonas meldet sich innerhalb von 24 Stunden persönlich bei dir.
+          Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
         </p>
         <p className="text-[#555555] text-base leading-relaxed mb-12">
           Du möchtest nicht warten? Ruf uns direkt an oder schreib uns auf
