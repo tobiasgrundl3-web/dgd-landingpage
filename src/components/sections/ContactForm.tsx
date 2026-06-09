@@ -111,6 +111,7 @@ export default function ContactForm() {
     try {
       await fetch(ENDPOINT, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             mitarbeiter: form.mitarbeiter,
